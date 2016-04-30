@@ -8,14 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ImageServiceController {
+public class Controller {
 
     @Autowired
     private ImageServiceConfig imageServiceConfig;
 
-    @RequestMapping(value = "/")
-    ResponseEntity<?> get() {
-        return new ResponseEntity(imageServiceConfig.toString(), HttpStatus.OK);
+    @RequestMapping(value = "/host")
+    ResponseEntity<?> getHost() {
+        return new ResponseEntity(imageServiceConfig.getHost(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/port")
+    ResponseEntity<?> getPort() {
+        return new ResponseEntity(imageServiceConfig.getPort(), HttpStatus.OK);
     }
 }
 

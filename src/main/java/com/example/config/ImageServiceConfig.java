@@ -1,11 +1,13 @@
 package com.example.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 
 @RefreshScope
 @Component
+@ConfigurationProperties
 public class ImageServiceConfig {
 
     @Value("${imageservice.host}")
@@ -50,15 +52,4 @@ public class ImageServiceConfig {
         return addWatermark;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "host='" + host + '\'' +
-                ", port='" + port + '\'' +
-                ", maxFileSize=" + maxFileSize +
-                ", renameFiles=" + renameFiles +
-                ", resizeFiles=" + resizeFiles +
-                ", addWatermark=" + addWatermark +
-                '}';
-    }
 }
